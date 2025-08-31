@@ -22,6 +22,7 @@ Project 007 is a comprehensive collection of resources for orchestrating sophist
 ```
 007/
 ├── agents/              # Elite agent definitions tuned for specific missions
+├── commands/            # Advanced operational commands and tool showcases
 ├── workflows/           # Complex multi-agent orchestration patterns
 ├── configurations/      # Operational configs and environment setups
 ├── examples/            # Field-tested implementation scenarios
@@ -46,6 +47,11 @@ Project 007 is a comprehensive collection of resources for orchestrating sophist
 - **Environment Templates**: Pre-configured operational environments
 - **Tool Integrations**: Seamless connection to your existing arsenal
 - **Security Protocols**: Built-in safety measures and access controls
+
+### Command Operations
+- **Advanced Tool Showcases**: Demonstration of Claude Code's full capabilities
+- **Multi-Agent Orchestration**: Complex parallel and sequential agent deployments
+- **Automated Workflows**: Pre-built commands for common development scenarios
 
 ## 🎭 Featured Agents
 
@@ -96,6 +102,7 @@ Detailed operational manuals available in the `documentation/` directory:
 ## ⚡ Quick Links
 
 - [Agent Catalog](./agents/)
+- [Command Operations](./commands/)
 - [Workflow Library](./workflows/)
 - [Example Missions](./examples/)
 - [Configuration Templates](./configurations/)
