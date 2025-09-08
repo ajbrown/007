@@ -52,6 +52,28 @@ Project 007 is a comprehensive collection of resources for orchestrating sophist
 - **Advanced Tool Showcases**: Demonstration of Claude Code's full capabilities
 - **Multi-Agent Orchestration**: Complex parallel and sequential agent deployments
 - **Automated Workflows**: Pre-built commands for common development scenarios
+- **Next Priority**: Autonomous execution of top-priority tasks from implementation plans
+
+## 🔥 Featured Commands
+
+### next-priority
+**Mission Type**: Autonomous Task Execution  
+**Operational Zone**: Implementation Plans  
+
+The `next-priority` command deploys a senior software engineer operative to autonomously identify and execute the next 3 highest priority tasks from your implementation plan. This elite operative:
+
+- **Parallel Execution**: Deploys up to 3 subagents simultaneously using isolated git worktrees
+- **Dependency Analysis**: Intelligently sequences tasks based on dependencies
+- **Progress Tracking**: Maintains real-time status updates in the implementation plan
+- **Quality Assurance**: Enforces testing and validation through specialized subagents
+- **Automated Integration**: Merges completed features back to main branch
+
+**Usage**: 
+```yaml
+Task:
+  subagent_type: next-priority
+  prompt: Execute tasks from docs/plans/main.md
+```
 
 ## 🎭 Featured Agents
 
