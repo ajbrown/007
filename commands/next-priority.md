@@ -1,9 +1,13 @@
 ---
-description: Automatically identify and execute the next 3 highest priority tasks from the implementation plan using parallel subagents
+description: Automatically identify and execute the next highest priority tasks from the implementation plan using parallel subagents
 arguments:
   - name: implementation_plan_path
     description: Path to the implementation plan markdown file
     default: docs/plans/main.md
+    required: false
+  - name: concurrent_tasks
+    description: Number of tasks to work on concurrently with parallel subagents
+    default: 3
     required: false
 ---
 
@@ -15,7 +19,7 @@ You have been tasked with ensuring the successful launch of this application. Yo
 
 ## YOUR TASK
 
-Your task is to work through the implementation plan, writing code, documentation, and tracking progress as you go. Study ${1:-docs/plans/main.md} and choose the next 3 most important tasks based on priority, dependencies, and value.  Tasks with dependencies MUST be completed before their dependents can be started. For each task, use a subagent to complete the task. You will use up to 3 parallel subagents to work on the 3 most important tasks at a time. If any of the 3 tasks are dependent on or build upon eachother, those tasks cannot be executed in parallel.  Take some time to determine if a task is best suited for another one to complete and be merged in before strarting, or if it can truely be done in parallel. 
+Your task is to work through the implementation plan, writing code, documentation, and tracking progress as you go. Study ${1:-docs/plans/main.md} and choose the next ${2:-3} most important tasks based on priority, dependencies, and value.  Tasks with dependencies MUST be completed before their dependents can be started. For each task, use a subagent to complete the task. You will use up to ${2:-3} parallel subagents to work on the ${2:-3} most important tasks at a time. If any of the ${2:-3} tasks are dependent on or build upon eachother, those tasks cannot be executed in parallel.  Take some time to determine if a task is best suited for another one to complete and be merged in before strarting, or if it can truely be done in parallel. 
 
 Before making working on each task, use a subagent to search the codebase for an existing implementation. Don't assume that a feature is not implemented or was not previously started.  If an implementation is found, use a subagent to determine if the feature is fully implemeted, and if so what is left to be implemented.  Update the plan accordingly.
 
@@ -45,7 +49,6 @@ When you discover a task that is already implemented, immediately update ${1:-do
 - ALWAYS KEEP ${1:-docs/plans/main.md} up to date with your learnings using a subagent. Especially after wrapping up/finishing your turn.
 - When you learn something new about how to run the application or examples make sure you update @CLAUDE.md using a subagent but keep it brief. For example if you run commands multiple times before learning the correct command then that file should be updated.
 - Keep @CLAUDE.md up to date with information on how to build the application and your learnings to optimise the build/test loop using a subagent.
-- When ${1:-docs/plans/main.md} becomes large periodically clean out the items that are completed from the file using a subagent.
+- When ${1:-docs/plans/main.md} becomes large (over 1500 lines) periodically use ea subagent to reduce the file size by summarizing fully completed tasks, phases and milestones.  Older tasks, phases, and milestones can be removed completely when more file size reduction is desired.
 - DO NOT PLACE STATUS REPORT UPDATES INTO @CLAUDE.md. Status reports should go directly into ${1:-docs/plans/main.md} and be noted in Github Issues.
-- DO NOT SKIP PRE-COMMIT HOOKS. If there are pre-commit hook failures, you must address them. 
-
+- DO NOT SKIP PRE-COMMIT HOOKS. If there are pre-commit hook failures, you must address them.
