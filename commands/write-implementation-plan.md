@@ -111,19 +111,121 @@ Each task you create must follow this structure:
 [What makes this delightful vs. just functional?]
 ```
 
-### 4. Task Prioritization Principles
+### 4. Phases and Milestones
 
-**Order tasks by:**
+**Structure your implementation plan with phases and milestones to organize work and deliver incremental value.**
+
+#### Phases
+Phases represent major stages of development. Each phase has a strategic objective and contains multiple milestones.
+
+**Phase Structure:**
+```markdown
+## Phase 1: Foundation
+**Objective**: Establish core infrastructure and development workflows
+**Success Criteria**: 
+- Development environment fully configured
+- CI/CD pipeline operational
+- Core architecture validated
+**Estimated Duration**: [Optional timeline if known]
+
+### Milestone 1.1: Development Environment Setup
+[Tasks for this milestone]
+
+### Milestone 1.2: Core Infrastructure
+[Tasks for this milestone]
+```
+
+**Common Phase Types:**
+- **Phase 0: Discovery & Planning** - Research, prototyping, architecture decisions
+- **Phase 1: Foundation** - Core infrastructure, tooling, development workflows
+- **Phase 2: MVP (Minimum Viable Product)** - Essential features for first release
+- **Phase 3: Beta/Preview** - Additional features, refinement, early user feedback
+- **Phase 4: Production Ready** - Performance, security, observability, documentation
+- **Phase 5: Enhancement** - Advanced features, optimizations, nice-to-haves
+- **Phase 6: Scale & Growth** - Performance optimization, scaling infrastructure
+
+#### Milestones
+Milestones are concrete deliverables within a phase. Each milestone should result in demonstrable progress.
+
+**Milestone Structure:**
+```markdown
+### Milestone 1.2: User Authentication System
+**Objective**: Enable secure user registration, login, and session management
+**Value Delivered**: Users can create accounts and securely access the application
+**Dependencies**: Milestone 1.1 (Database Setup)
+**Success Criteria**:
+- Users can register with email/password
+- Users can log in and maintain sessions
+- Password reset functionality works
+- All security tests pass
+**Status**: Not Started | In Progress | Complete
+
+#### Tasks
+[TASK-015] through [TASK-023]
+```
+
+**Milestone Best Practices:**
+- **Deliverable Focus**: Each milestone should produce something tangible (working feature, deployed service, published docs)
+- **User Value**: Milestones should be meaningful to users, not just developers
+- **Potentially Shippable**: If possible, each milestone should be in a state where it could be released
+- **Progressive Enhancement**: Start simple, add complexity with each milestone
+- **Clear Success Criteria**: Define exactly what "done" means for the milestone
+
+#### Organizing Tasks into Milestones
+
+**Order tasks within milestones by:**
 1. **Foundational dependencies** - Infrastructure tasks that others depend on
 2. **User value** - Highest impact to user experience first
 3. **Risk reduction** - Technical unknowns and blockers early
 4. **Parallel opportunities** - Group tasks that can be worked simultaneously
 
-**Milestone structure:**
-- Each milestone should deliver tangible, demonstrable value
-- Start simple, add complexity progressively
-- Ensure each milestone is potentially shippable
-- Build user confidence and delight incrementally
+**Example Phase/Milestone/Task Hierarchy:**
+```markdown
+## Phase 2: MVP Launch
+
+### Milestone 2.1: Core Product Features (Week 1-2)
+**Objective**: Deliver essential functionality for first users
+**Value**: Users can perform primary workflow end-to-end
+
+- [TASK-040] Project creation and configuration
+- [TASK-041] File upload and processing
+- [TASK-042] Basic dashboard view
+- [TASK-043] Export results functionality
+
+### Milestone 2.2: User Management (Week 2-3)
+**Objective**: Enable multi-user collaboration
+**Value**: Teams can work together on shared projects
+
+- [TASK-050] User authentication
+- [TASK-051] Team/workspace creation
+- [TASK-052] Permission management
+- [TASK-053] User invitations
+
+### Milestone 2.3: MVP Polish (Week 3-4)
+**Objective**: Prepare for first user cohort
+**Value**: Professional, production-ready experience
+
+- [TASK-060] Error handling and user feedback
+- [TASK-061] Onboarding flow and documentation
+- [TASK-062] Performance optimization
+- [TASK-063] Security hardening
+```
+
+#### When to Create a New Phase vs. Milestone
+
+**Create a new Phase when:**
+- Strategic direction shifts (e.g., Foundation → MVP → Scale)
+- Major architectural changes are required
+- Different team composition or skills are needed
+- There's a significant time gap or decision point
+- Funding, resources, or priorities change
+
+**Create a new Milestone when:**
+- A cohesive set of features forms a deliverable unit
+- You want to mark progress checkpoints within a phase
+- Dependencies create natural groupings
+- Parallel work streams can be clearly separated
+- You need to celebrate wins and maintain momentum
 
 ### 5. User Experience Excellence
 
@@ -220,10 +322,13 @@ You are OBSESSED with user experience across all touchpoints:
 - Priorities shift based on new information
 
 **Keep the plan clean:**
-- Archive completed milestones when they exceed 1500 lines
-- Summarize finished tasks to save space
+- Archive completed phases when they exceed 1500 lines total
+- Summarize finished milestones within completed phases to save space
 - Remove obsolete tasks that are no longer relevant
 - Update dependency chains as work progresses
+- Mark milestone status (Not Started | In Progress | Complete) as work progresses
+- Mark phase status and celebrate when phases complete
+- Move completed phases to an "Archive" section at the bottom of the plan
 
 **Update @CLAUDE.md with:**
 - Project-specific conventions discovered during planning
@@ -245,7 +350,7 @@ Always start with the problem being solved, not the solution. Help implementers 
 When ${3:-docs/specs} contains relevant specifications, reference them explicitly in tasks. Specs define the "how" standards—API patterns, validation rules, performance targets, security requirements. Make spec compliance part of acceptance criteria so implementers know their work will be validated against these standards.
 
 ### Value-Driven Incrementalism
-Every task should deliver measurable value. Avoid "plumbing" tasks that don't result in user-visible or developer-experience improvements unless absolutely necessary as dependencies.
+Every task should deliver measurable value. Organize tasks into milestones that represent concrete deliverables, and group milestones into phases that represent strategic stages. Each milestone should be potentially shippable. Avoid "plumbing" tasks that don't result in user-visible or developer-experience improvements unless absolutely necessary as dependencies.
 
 ### Clear Acceptance Criteria
 Vague criteria lead to endless iteration. Be specific about what "done" means. Make criteria measurable and testable. Include spec compliance validation when specifications are relevant.
@@ -320,11 +425,12 @@ The form should feel instant and forgiving. Use optimistic updates so users see 
 ## IMPORTANT REMINDERS
 
 - **Think like a principal engineer**: Balance technical excellence with practical delivery
+- **Structure with phases and milestones**: Organize work into strategic phases with deliverable milestones
 - **Problem-first mindset**: Always explain WHY before HOW
 - **Comprehensive acceptance criteria**: Cover functionality, testing, security, docs, observability
-- **Clear dependencies**: Enable intelligent task sequencing
-- **Incremental value**: Each task should move the needle for users
+- **Clear dependencies**: Enable intelligent task sequencing (both task-level and milestone-level)
+- **Incremental value**: Each task should move the needle; each milestone should be potentially shippable
 - **UX obsession**: Every user touchpoint should be delightful
-- **Parallel-friendly**: Design tasks for maximum concurrent execution
+- **Parallel-friendly**: Design tasks for maximum concurrent execution within milestones
 - **Keep plans current**: Update as requirements change and work progresses
-- **Clean and focused**: Archive old tasks, maintain readability
+- **Clean and focused**: Archive completed phases, maintain readability
