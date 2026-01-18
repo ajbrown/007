@@ -1,395 +1,311 @@
-# 007 - Agentic Software Delivery Workflows
+# Project 007 - Elite Multi-Agent Development Plugin
 
 ```
-     ___     ___    _____ 
+     ___     ___    _____
     / _ \   / _ \  |___  |
-   | | | | | | | |    / / 
-   | | | | | | | |   / /  
-   | |_| | | |_| |  / /   
-    \___/   \___/  /_/    
-                          
-   CLASSIFIED: AGENT WORKFLOWS
+   | | | | | | | |    / /
+   | | | | | | | |   / /
+   | |_| | | |_| |  / /
+    \___/   \___/  /_/
+
+   ACCELERATE YOUR VELOCITY
 ```
 
-> **Mission Briefing**: Your destination for advanced agentic software delivery configurations, examples, and operational intelligence.
+> Transform your solo development workflow into an elite multi-agent operation. Let AI agents handle the repetitive work while you focus on architecture and innovation.
 
-## 🎯 Project Overview
+## 💡 The Problem
 
-Project 007 is a comprehensive collection of resources for orchestrating sophisticated agentic workflows in software development. This repository contains battle-tested agent definitions, workflow patterns, and operational configurations designed to enhance your software delivery capabilities.
+You're a skilled engineer, but you're constantly context-switching between:
+- Writing requirements → Planning implementation → Coding → Testing → Documenting
+- Bouncing between 5 open files trying to keep patterns consistent
+- Writing the same boilerplate for the 47th time this month
+- Waiting for CI to tell you about that test you forgot to update
 
-## 🗂️ Repository Structure
+**Sound familiar?** You need force multipliers, not more coffee.
 
+## ✨ The Solution
+
+Project 007 gives you a team of specialized AI agents that work autonomously:
+
+- **Strategic Planner** - Transforms requirements into detailed, executable implementation plans
+- **Autonomous Executor** - Deploys 3+ agents simultaneously to knock out tasks in parallel
+- **Quality Assurance** - Runs comprehensive test suites and fixes failing tests automatically
+- **Specialized Engineers** - Frontend, security, testing specialists available on-demand
+
+### Real Example: What You Get
+
+**Before Project 007:**
+```bash
+You: "I need to implement user authentication"
+Claude: "Sure! Let me write that for you..."
+[2 hours later, you have code but no tests, incomplete docs, and security gaps]
 ```
-007/
-├── agents/              # Elite agent definitions tuned for specific missions
-├── commands/            # Advanced operational commands and tool showcases
-├── workflows/           # Complex multi-agent orchestration patterns
-├── configurations/      # Operational configs and environment setups
-├── examples/            # Field-tested implementation scenarios
-├── documentation/       # Classified operational manuals
-└── README.md           # You are here
+
+**After Project 007:**
+```bash
+You: /write-implementation-plan
+# Creates: 15 discrete tasks with acceptance criteria, dependencies, specs
+
+You: /next-priority docs/plans/main.md 3
+# Spawns 3 agents:
+#   Agent 1: Database schema + migrations
+#   Agent 2: API endpoints + rate limiting
+#   Agent 3: UI components + validation
+# [All complete in ~45 minutes with tests, docs, security review]
+
+You: *Goes to lunch feeling like a 10x engineer*
 ```
 
-## 🚀 Core Capabilities
+**Productivity multiplier:** 3-5x on well-defined tasks.
 
-### Agent Arsenal
-- **Specialized Agents**: Each agent is precision-tuned for specific operations
-- **Multi-Agent Coordination**: Orchestrate complex missions with multiple agents
-- **Adaptive Workflows**: Dynamic agent selection based on mission parameters
+---
 
-### Workflow Patterns
-- **Sequential Operations**: Chain agents for step-by-step execution
-- **Parallel Deployments**: Run multiple agents simultaneously
-- **Conditional Branching**: Smart routing based on outcomes
-- **Error Recovery**: Built-in contingency protocols
+## 🚀 Quick Start (5 Minutes)
 
-### Configuration Management
-- **Environment Templates**: Pre-configured operational environments
-- **Tool Integrations**: Seamless connection to your existing arsenal
-- **Security Protocols**: Built-in safety measures and access controls
-
-### Command Operations
-- **Advanced Tool Showcases**: Demonstration of Claude Code's full capabilities
-- **Multi-Agent Orchestration**: Complex parallel and sequential agent deployments
-- **Automated Workflows**: Pre-built commands for common development scenarios
-- **Next Priority**: Autonomous execution of top-priority tasks from implementation plans
-
-## 🔥 Featured Commands
-
-### /write-implementation-plan - Strategic Mission Planning
-
-**Mission Classification**: Strategic Planning & Architecture  
-**Clearance Level**: Principal Software Engineer  
-**Operational Theater**: Requirements & Specifications  
-
-The `/write-implementation-plan` command deploys a Principal Software Engineer operative to transform your requirements and specifications into a comprehensive, battle-ready implementation plan. This strategic command creates the blueprint that `/next-priority` executes autonomously.
-
-#### 🎯 Operational Capabilities
-
-**Requirements Analysis**
-- Deep analysis of PRD (Product Requirements Document)
-- Git history review to identify recent changes
-- Priority assessment based on user value and business impact
-
-**Specification Integration**
-- Subagent-driven study of technical specifications
-- Cataloging specs by feature area and topic
-- Automatic spec-to-task mapping for compliance tracking
-
-**Phase & Milestone Architecture**
-- Strategic phase planning (Foundation → MVP → Production Ready → Scale)
-- Tactical milestone definition with clear deliverables
-- Progressive value delivery at every checkpoint
-
-**Problem-First Task Design**
-- Each task starts with WHY before HOW
-- Comprehensive acceptance criteria (testing, security, docs, observability)
-- Skeleton implementation examples for complex tasks
-- User experience obsession across all touchpoints
-
-**Parallelization Optimization**
-- Tasks designed for maximum concurrent execution
-- Clear dependency chains enable intelligent sequencing
-- Milestone grouping for `/next-priority` efficiency
-
-#### 📋 Command Syntax
+### 1. Install the Plugin
 
 ```bash
-/write-implementation-plan [requirements_path] [plan_path] [specs_path]
+claude plugin install ajbrown/007
 ```
 
-**Arguments**:
-- `requirements_path` (optional): Path to your PRD/requirements document
-  - Default: `docs/reqs/main.md`
-- `plan_path` (optional): Path to the implementation plan to create/update
-  - Default: `docs/plans/main.md`
-- `specs_path` (optional): Path to directory with implementation specifications
-  - Default: `docs/specs`
+**Verify installation:**
+```bash
+claude plugin list
+# You should see "project-007" in the output
+```
 
-#### 🚀 Usage Examples
+### 2. Try Your First Command
 
-**Standard Planning Mission** - Create plan from default requirements:
+Open Claude Code and run:
+
 ```bash
 /write-implementation-plan
 ```
 
-**Custom Requirements** - Different requirements document:
-```bash
-/write-implementation-plan docs/reqs/mvp-requirements.md
-```
+This creates an implementation plan from your requirements. (Don't have requirements yet? That's fine—it'll help you create them!)
 
-**Separate Plan File** - Keep multiple plans:
-```bash
-/write-implementation-plan docs/reqs/main.md docs/plans/sprint-3.md
-```
+### 3. Experience the Force Multiplier
 
-**With Specifications** - Include technical specs:
-```bash
-/write-implementation-plan docs/reqs/main.md docs/plans/main.md docs/specs
-```
-
-**Full Custom Configuration**:
-```bash
-/write-implementation-plan docs/reqs/v2-features.md docs/plans/v2-plan.md docs/specs/v2
-```
-
-#### 💡 The Planning Workflow
-
-**1. Transform Requirements into Action**
-Your PRD describes WHAT users need. The planner analyzes WHY it matters and designs HOW to build it incrementally.
-
-**2. Structure with Phases & Milestones**
-- **Phases**: Strategic stages (Foundation, MVP, Production Ready)
-- **Milestones**: Tactical deliverables within each phase
-- **Tasks**: Operational units with clear acceptance criteria
-
-**3. Specification-Driven Standards**
-When specs exist, tasks automatically reference them:
-- API design patterns → RESTful endpoint tasks
-- Form validation standards → UI form tasks
-- Security requirements → Authentication tasks
-
-**4. Parallel Execution Ready**
-Tasks are designed with `/next-priority` in mind—clear dependencies, proper grouping, maximum parallelization opportunities.
-
-#### 🔄 The Complete Workflow: Plan → Execute → Iterate
-
-**The Autonomous Development Cycle:**
-
-```bash
-# Phase 1: Strategic Planning
-/write-implementation-plan docs/reqs/main.md docs/plans/main.md docs/specs
-
-# Phase 2: Autonomous Execution
-/next-priority docs/plans/main.md 3
-
-# Phase 3: Review & Adjust
-# Review completed milestone, provide feedback, adjust plan
-
-# Phase 4: Continue Execution
-/next-priority docs/plans/main.md 3
-
-# Repeat until phase/milestone complete, then review before next phase
-```
-
-**Key Workflow Principles:**
-- **Plan First**: Create comprehensive implementation plan with phases and milestones
-- **Execute by Milestone**: Use `/next-priority` to execute tasks within current milestone
-- **Review at Boundaries**: Review and course-correct between milestones and phases
-- **Iterate Continuously**: Update plan based on learnings, repeat cycle
-
-#### ⚡ The Power of Strategic Planning
-
-**Without /write-implementation-plan:**
-> "Let's build user authentication. Uh... where do we start? What about the database? Oh wait, we need to decide on the auth library first. And what about password reset? Should that be in this PR or separate? How do we test this? When do we write docs?"
-
-**With /write-implementation-plan:**
-> **Phase 2: MVP Launch**
-> 
-> **Milestone 2.1: User Authentication System**
-> - [TASK-015] Database schema for users and sessions (follows db-design-spec.md)
-> - [TASK-016] Auth library integration with JWT (follows api-security-spec.md)
-> - [TASK-017] Login/logout endpoints with rate limiting
-> - [TASK-018] Password reset flow with email notifications
-> - [TASK-019] Unit tests achieving 80% coverage
-> - [TASK-020] E2E authentication tests
-> - [TASK-021] User documentation for account management
-> - [TASK-022] Security review and penetration testing
-> 
-> All tasks parallelizable except 016→017. Deploy with: `/next-priority docs/plans/main.md 3`
-
-Clear direction. No ambiguity. Maximum velocity.
-
-#### 🎖️ Best Practices
-
-1. **Start with Requirements**: Write clear requirements before planning implementation
-2. **Leverage Specifications**: Create specs for patterns you'll use repeatedly (API design, validation, etc.)
-3. **Think in Milestones**: Each milestone should be a demonstrable, potentially shippable deliverable
-4. **Design for Parallelization**: Structure tasks so `/next-priority` can maximize concurrency
-5. **Review and Iterate**: Update the plan as you learn—it's a living document
-6. **Celebrate Milestones**: Mark phase/milestone completion before moving to the next
-
-### /next-priority - The Ultimate Force Multiplier
-
-**Mission Classification**: Elite Autonomous Task Execution  
-**Clearance Level**: Senior Software Engineer  
-**Operational Theater**: Implementation Plans  
-
-The `/next-priority` command is your secret weapon for accelerating development velocity. This command deploys an elite senior software engineer operative who autonomously identifies, prioritizes, and executes multiple high-value tasks from your implementation plan—all while you focus on strategic initiatives.
-
-#### 🎯 Operational Capabilities
-
-**Intelligent Task Selection**
-- Analyzes your entire implementation plan for priority, dependencies, and business value
-- Automatically sequences dependent tasks to prevent conflicts
-- Adapts to changing priorities and discovered complexities
-
-**Parallel Multi-Agent Deployment**
-- Spawns multiple specialized subagents working simultaneously
-- Each agent operates in isolated git worktrees for clean separation
-- Configurable concurrency from 1 (sequential) to N (parallel blitz)
-
-**Quality Enforcement Protocol**
-- Deploys quality-engineer subagents for comprehensive test coverage
-- Runs test-runner subagents to validate changes don't break existing functionality
-- Enforces acceptance criteria validation before marking tasks complete
-
-**Autonomous Integration Pipeline**
-- Creates feature branches with descriptive naming conventions
-- Commits changes with meaningful messages
-- Merges completed work via fast-forward when possible
-- Handles merge conflicts intelligently when necessary
-- Cleans up worktrees after successful integration
-
-**Live Progress Intelligence**
-- Marks tasks "in progress" when work begins
-- Updates implementation plan with discoveries and learnings
-- Marks tasks complete only after acceptance criteria validation
-- Archives completed tasks to keep plans manageable
-
-#### 📋 Command Syntax
-
-```bash
-/next-priority [implementation_plan_path] [concurrent_tasks]
-```
-
-**Arguments**:
-- `implementation_plan_path` (optional): Path to your implementation plan
-  - Default: `docs/plans/main.md`
-- `concurrent_tasks` (optional): Number of tasks to execute in parallel
-  - Default: `3`
-  - Range: `1` to `N` (limited by system resources)
-
-#### 🚀 Usage Examples
-
-**Standard Mission** - Execute 3 tasks from default plan:
 ```bash
 /next-priority
 ```
 
-**Focused Assault** - Work one task at a time for complex dependencies:
+Watch as 3 AI agents simultaneously execute tasks from your plan. Each agent:
+- Works in isolated git worktrees (no conflicts!)
+- Writes tests for their changes
+- Updates documentation
+- Merges back to main when complete
+
+---
+
+## 📦 What's Included
+
+### 🎯 Commands (Your Mission Control)
+
+| Command | What It Does | When to Use |
+|---------|-------------|-------------|
+| `/write-implementation-plan` | Transforms requirements into detailed execution plans with phases, milestones, and parallelizable tasks | Start of sprint, new feature, refactor planning |
+| `/next-priority` | Deploys 1-N AI agents to autonomously execute top-priority tasks in parallel | After planning, during sprints, for autonomous execution |
+| `/testing/fix-tests` | Runs test suite, identifies failures, deploys agents to fix all failing tests | After merges, during CI troubleshooting, pre-release |
+
+### 🎭 Agents (Your Specialist Team)
+
+These specialized agents work autonomously or can be invoked on-demand:
+
+| Agent | Specialization | Example Use |
+|-------|---------------|-------------|
+| `product-manager` | Requirements, planning, feature prioritization | Strategic planning, roadmap creation |
+| `frontend-engineer` | React, UI/UX, design systems, accessibility | Building interfaces, component work |
+| `security-reviewer` | OWASP, vulnerability assessment, penetration testing | Security audits, pre-deployment reviews |
+| `quality-engineer` | Test development, coverage analysis, test strategy | Writing tests, improving test quality |
+| `code-reviewer` | Code quality, best practices, refactoring | PR reviews, code quality checks |
+| `linear-scrum-master` | Linear integration, sprint planning, ticket management | Syncing Linear with implementation plans |
+
+**Note:** Agents are deployed automatically by commands, but you can also invoke them directly for specific tasks.
+
+---
+
+## 📖 Core Workflow: Plan → Execute → Ship
+
+### The Autonomous Development Cycle
+
 ```bash
-/next-priority docs/plans/main.md 1
+# 1. PLAN - Create your strategic implementation plan
+/write-implementation-plan docs/reqs/main.md docs/plans/sprint-5.md
+
+# 2. EXECUTE - Deploy autonomous agents to work the plan
+/next-priority docs/plans/sprint-5.md 3
+
+# 3. REVIEW - Check the completed milestone, provide feedback
+# (Review the PRs, test the functionality, gather learnings)
+
+# 4. ITERATE - Continue execution or update plan based on learnings
+/next-priority docs/plans/sprint-5.md 3
+
+# 5. VALIDATE - Ensure quality before shipping
+/testing/fix-tests
+
+# 6. SHIP - Deploy with confidence
+git push origin main
 ```
 
-**Blitz Operation** - Maximum parallelization for independent tasks:
+### Key Principles
+
+1. **Plan in Milestones** - Each milestone should be demonstrable and valuable
+2. **Execute in Parallel** - Let agents handle independent tasks simultaneously
+3. **Review at Boundaries** - Check work between milestones, not constantly
+4. **Iterate Continuously** - Update plans as you learn, repeat the cycle
+
+---
+
+## 💎 When to Use Project 007
+
+### ✅ Perfect For
+
+- **Feature Development** - Turn requirements into working code fast
+- **Technical Debt** - Systematically eliminate debt with parallel execution
+- **Testing Initiatives** - Boost coverage with dedicated test-writing agents
+- **Refactoring Projects** - Break down large refactors into safe, discrete tasks
+- **Documentation Sprints** - Update docs across your codebase efficiently
+- **Prototyping** - Rapidly build MVPs with multi-agent parallelization
+
+### ⚠️ Not Ideal For
+
+- **Exploratory Coding** - When you're not sure what to build yet
+- **Learning New Tech** - When you need to understand deeply, not just ship
+- **Single-File Changes** - Overhead isn't worth it for trivial edits
+- **Highly Coupled Work** - Tasks with complex interdependencies
+
+---
+
+## 🎓 Learning Resources
+
+### For Beginners
+
+**New to Claude Code?**
+- [Claude Code Documentation](https://code.claude.com/docs)
+- Start with `/write-implementation-plan` to see how planning works
+- Use concurrency=1 for `/next-priority` until you understand the workflow
+
+**New to Agentic Workflows?**
+- Think of agents as specialized team members who work autonomously
+- Each agent has specific skills and works on isolated tasks
+- You provide direction, agents handle execution and details
+
+### For Advanced Users
+
+- **[PLUGIN.md](./PLUGIN.md)** - Technical architecture and plugin development
+- **[PUBLISHING.md](./PUBLISHING.md)** - Publishing and distribution guide
+- **[/write-implementation-plan Deep Dive](./docs/commands/write-implementation-plan.md)** - Complete planning guide
+- **[/next-priority Deep Dive](./docs/commands/next-priority.md)** - Advanced execution patterns
+- **[/testing/fix-tests Reference](./docs/commands/fix-tests.md)** - Test repair guide
+
+---
+
+## 🔧 Configuration & Customization
+
+### Adjusting Concurrency
+
+Start conservative (1-3 agents), increase as you get comfortable:
+
 ```bash
+# Conservative - one task at a time
+/next-priority docs/plans/main.md 1
+
+# Balanced - most common usage
+/next-priority docs/plans/main.md 3
+
+# Aggressive - for highly parallelizable work
 /next-priority docs/plans/main.md 5
 ```
 
-**Custom Intelligence** - Different implementation plan:
+### Custom Paths
+
+All commands support custom paths:
+
 ```bash
-/next-priority docs/plans/sprint-2.md 3
+# Custom requirements and plan locations
+/write-implementation-plan docs/reqs/v2.md docs/plans/v2-plan.md
+
+# Different implementation plans for different initiatives
+/next-priority docs/plans/frontend-work.md 3
+/next-priority docs/plans/backend-work.md 2
 ```
 
-**Rapid Prototyping** - High concurrency on experimental plan:
+### Integration with Your Workflow
+
+Project 007 works alongside your existing tools:
+- **Linear** - Use `linear-scrum-master` agent for ticket sync
+- **Git** - All work happens in proper branches with clean commits
+- **CI/CD** - Agents respect your test suite and linting rules
+- **Code Review** - Work is organized into reviewable PRs
+
+---
+
+## 🆘 Troubleshooting
+
+### "The agents aren't working as expected"
+
+- **Check your implementation plan** - Agents need clear acceptance criteria
+- **Review dependencies** - Ensure task dependencies are correctly marked
+- **Start with concurrency=1** - Debug with sequential execution first
+- **Check git status** - Ensure you have a clean working directory
+
+### "I'm not seeing the plugin commands"
+
 ```bash
-/next-priority docs/plans/prototype.md 7
+# Verify plugin is installed
+claude plugin list
+
+# Reinstall if needed
+claude plugin uninstall project-007
+claude plugin install ajbrown/007
 ```
 
-#### 💡 Strategic Applications
+### "Tasks aren't completing properly"
 
-**Sprint Acceleration**
-Deploy at sprint start to knock out foundational tasks while your team tackles complex features.
+- Ensure acceptance criteria are specific and measurable
+- Check that required files/dependencies exist in your project
+- Review agent output for blockers or errors
+- Try smaller, more focused tasks
 
-**Technical Debt Elimination**  
-Point at a technical debt plan and let the operative systematically clean up your codebase.
+---
 
-**Documentation Sprints**  
-Create a documentation-focused plan and execute comprehensive doc updates in parallel.
+## 🤝 Contributing
 
-**Test Coverage Campaigns**  
-Generate a test-writing plan and deploy multiple agents to boost coverage rapidly.
+Contributions welcome! See [CONTRIBUTING.md](./CONTRIBUTING.md) for guidelines.
 
-**Refactoring Operations**  
-Break down large refactors into discrete tasks and execute them with surgical precision.
+**Ways to contribute:**
+- Add new specialized agents
+- Improve existing commands
+- Share your workflows and patterns
+- Report issues or suggest enhancements
 
-#### ⚡ The Power of Autonomous Execution
+---
 
-Imagine this scenario:
+## 📄 License
 
-> **Monday 9 AM**: You create an implementation plan with 15 tasks for your new feature.  
-> **Monday 9:15 AM**: You run `/next-priority docs/plans/new-feature.md 3`  
-> **Monday 9:16 AM**: Three subagents spin up, each in isolated worktrees:
-> - Agent 1: Implementing the data model
-> - Agent 2: Creating API endpoints  
-> - Agent 3: Building the UI components
-> 
-> **Monday 11 AM**: All three tasks complete with tests, documentation, and validation. Merged to main.  
-> **Monday 11:05 AM**: `/next-priority` automatically selects the next 3 tasks and continues.  
-> **Monday 3 PM**: 12 of 15 tasks complete. You review the work and guide the final 3 tasks.  
-> **Monday 5 PM**: Feature complete, tested, and ready for staging deployment.
+MIT License - See [LICENSE](./LICENSE) for details.
 
-This isn't science fiction. This is the force multiplier effect of intelligent agent orchestration.
-
-#### 🎖️ Best Practices
-
-1. **Structure Your Plans**: Use `/write-implementation-plan` to create well-defined tasks with clear acceptance criteria
-2. **Respect Boundaries**: `/next-priority` works within current milestone/phase only—review before advancing
-3. **Manage Dependencies**: Mark dependent tasks clearly so the operative can sequence properly  
-4. **Start Conservative**: Begin with 1-3 concurrent tasks until you understand the workflow
-5. **Monitor Progress**: Check the implementation plan periodically for status updates
-6. **Validate Outcomes**: Review completed milestones before advancing to the next phase
-7. **Iterate and Improve**: Refine your plans based on what works and what doesn't
-
-## 🎭 Featured Agents
-
-- **code-reviewer**: Security and quality analysis specialist
-- **test-runner**: Automated testing and validation operative
-- **frontend-engineer**: UI/UX implementation expert
-- **product-manager**: Strategic planning and coordination
-- **security-reviewer**: Vulnerability assessment specialist
-- **And more classified operatives...**
-
-## 📡 Getting Started
-
-### Mission Prerequisites
-- Claude Code (claude.ai/code) access
-- Basic understanding of agentic workflows
-- Security clearance (just kidding, it's open source!)
-
-### Deployment Instructions
-1. Clone this classified repository
-2. Review agent definitions in the `agents/` directory
-3. Study workflow patterns in `workflows/`
-4. Execute your first mission using the Task tool
-
-### Example Operation
-```yaml
-Task:
-  subagent_type: code-reviewer
-  description: Review critical security updates
-  prompt: Analyze the authentication module for vulnerabilities
-```
-
-## 🔧 Contributing
-
-New recruits welcome! When contributing:
-1. Follow the established agent definition format
-2. Document your workflows thoroughly
-3. Test in isolated environments first
-4. Submit via secure channels (pull requests)
-
-## 📚 Documentation
-
-Detailed operational manuals available in the `documentation/` directory:
-- Agent Creation Guide
-- Workflow Orchestration Patterns
-- Best Practices & Conventions
-- Troubleshooting Protocols
+---
 
 ## ⚡ Quick Links
 
-- [Agent Catalog](./agents/)
-- [Command Operations](./commands/)
-- [Workflow Library](./workflows/)
-- [Example Missions](./examples/)
-- [Configuration Templates](./configurations/)
+- **[Installation](#-quick-start-5-minutes)** - Get started in 5 minutes
+- **[Core Workflow](#-core-workflow-plan--execute--ship)** - Learn the development cycle
+- **[Commands Reference](#-commands-your-mission-control)** - Available commands
+- **[Agents Reference](#-agents-your-specialist-team)** - Available agents
+- **[PLUGIN.md](./PLUGIN.md)** - Technical documentation
+- **[PUBLISHING.md](./PUBLISHING.md)** - Distribution guide
+- **[GitHub Issues](https://github.com/ajbrown/007/issues)** - Bug reports & features
 
 ---
 
 ```
-REMEMBER: WITH GREAT AGENTS COMES GREAT RESPONSIBILITY
+"The name's Code... Claude Code." 🍸
+
+Built with ❤️ for developers who want to ship faster.
 ```
 
-*This project is licensed for peaceful software development purposes only.*
+**Plugin Version:** 1.0.0
+**Last Updated:** 2026-01-16

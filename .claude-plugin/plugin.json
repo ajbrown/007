@@ -1,0 +1,30 @@
+{
+  "name": "project-007",
+  "version": "1.0.0",
+  "description": "Elite agentic software delivery workflows - advanced multi-agent orchestration, strategic planning, and autonomous task execution for accelerated development velocity",
+  "author": {
+    "name": "AJ Brown",
+    "email": "yesreply@happy.engineering",
+    "url": "https://github.com/ajbrown"
+  },
+  "homepage": "https://github.com/ajbrown/007",
+  "repository": "https://github.com/ajbrown/007",
+  "license": "MIT",
+  "keywords": [
+    "agents",
+    "workflows",
+    "automation",
+    "software-delivery",
+    "multi-agent",
+    "task-orchestration",
+    "implementation-planning",
+    "parallel-execution",
+    "autonomous-development"
+  ],
+  "commands": [
+    "./commands/next-priority.md",
+    "./commands/write-implementation-plan.md",
+    "./commands/testing/fix-tests.md"
+  ],
+  "agents": "./agents/"
+}
