@@ -1,4 +1,4 @@
-# Project 007 - Claude Plugin Architecture
+# Project 007 - Plugin Marketplace Architecture
 
 ```
  _____  _____  _____
@@ -10,41 +10,84 @@
 PLUGIN DOCUMENTATION
 ```
 
-This document provides technical details about the Project 007 plugin architecture for Claude Code.
+This document provides technical details about the Project 007 plugin marketplace architecture for Claude Code.
 
-## Plugin Structure
+## Marketplace Structure
 
-Project 007 follows the official Claude Code plugin specification:
+Project 007 is a **plugin marketplace** containing one or more plugins. The marketplace manifest lives at the repo root, and each plugin has its own directory under `plugins/`.
 
 ```
 007/
 ├── .claude-plugin/
-│   └── plugin.json          # Plugin manifest (required)
-├── agents/                   # Agent definitions
-│   ├── code-reviewer.md
-│   ├── frontend-engineer.md
-│   ├── linear-scrum-master.md
-│   ├── product-manager.md
-│   ├── quality-engineer.md
-│   └── security-reviewer.md
-├── commands/                 # Command definitions
-│   ├── next-priority.md
-│   ├── write-implementation-plan.md
-│   └── testing/
-│       └── fix-tests.md
-├── CLAUDE.md                # Project-specific Claude instructions
-├── LICENSE                  # MIT License
-├── PLUGIN.md               # This file
-└── README.md               # User-facing documentation
+│   └── marketplace.json           # Marketplace manifest (required)
+├── plugins/
+│   └── ajentic/                   # "ajentic" plugin
+│       ├── .claude-plugin/
+│       │   └── plugin.json        # Plugin manifest (required)
+│       ├── agents/                # Agent definitions
+│       │   ├── code-reviewer.md
+│       │   ├── frontend-engineer.md
+│       │   ├── linear-scrum-master.md
+│       │   ├── product-manager.md
+│       │   ├── quality-engineer.md
+│       │   └── security-reviewer.md
+│       └── commands/              # Command definitions
+│           ├── next-priority.md
+│           ├── write-implementation-plan.md
+│           └── testing/
+│               └── fix-tests.md
+├── docs/                          # Reference documentation
+├── CLAUDE.md                      # Project-specific Claude instructions
+├── LICENSE                        # MIT License
+├── PLUGIN.md                      # This file
+├── PUBLISHING.md                  # Distribution guide
+└── README.md                      # User-facing documentation
 ```
 
-## Plugin Manifest
+## Marketplace Manifest
 
-The `.claude-plugin/plugin.json` file defines the plugin metadata and configuration:
+The `.claude-plugin/marketplace.json` file defines the marketplace and lists available plugins:
 
 ```json
 {
-  "name": "project-007",
+  "name": "007",
+  "owner": {
+    "name": "A.J. Brown",
+    "email": "aj@ajbrown.org"
+  },
+  "metadata": {
+    "description": "Project 007 - Elite agentic software delivery workflows...",
+    "version": "1.0.0",
+    "pluginRoot": "./plugins"
+  },
+  "plugins": [
+    {
+      "name": "ajentic",
+      "source": "./plugins/ajentic",
+      "description": "...",
+      "version": "1.0.0",
+      "keywords": [...],
+      "category": "productivity"
+    }
+  ]
+}
+```
+
+### Marketplace Fields
+- `name`: Marketplace identifier
+- `owner`: Marketplace owner information
+- `metadata.description`: Marketplace description
+- `metadata.version`: Marketplace manifest version
+- `metadata.pluginRoot`: Root directory for plugins
+- `plugins`: Array of available plugins with source paths
+
+## Plugin Manifest
+
+Each plugin has its own `.claude-plugin/plugin.json`:
+
+```json
+{
+  "name": "ajentic",
   "version": "1.0.0",
   "description": "Elite agentic software delivery workflows...",
   "author": { ... },
@@ -72,8 +115,8 @@ The `.claude-plugin/plugin.json` file defines the plugin metadata and configurat
 - `repository`: Source code URL
 - `license`: License identifier
 - `keywords`: Discovery and search tags
-- `commands`: Array of command file paths
-- `agents`: Path to agents directory
+- `commands`: Array of command file paths (relative to plugin root)
+- `agents`: Path to agents directory (relative to plugin root)
 
 ## Agent Definitions
 
@@ -97,7 +140,7 @@ Detailed operational instructions for the agent...
 - `description` (required): Brief description and usage guidance
 - `capabilities` (optional): Array of specific capabilities
 
-### Current Agents
+### Current Agents (ajentic plugin)
 
 | Agent | Purpose |
 |-------|---------|
@@ -135,7 +178,7 @@ Detailed instructions for command execution...
   - `default`: Default value if not provided
   - `required`: Whether argument is required (boolean)
 
-### Current Commands
+### Current Commands (ajentic plugin)
 
 | Command | Purpose | Arguments |
 |---------|---------|-----------|
@@ -143,25 +186,22 @@ Detailed instructions for command execution...
 | `/write-implementation-plan` | Strategic planning | `requirements_path`, `plan_path`, `specs_path` |
 | `/testing/fix-tests` | Comprehensive test fixing | None |
 
-## Plugin Installation
+## Installation
 
 ### For Users
 
 ```bash
-# Install from GitHub
-claude plugin install ajbrown/007
+# Add the 007 marketplace
+/plugin marketplace add ajbrown/007
 
-# Or from local clone
-claude plugin install /path/to/007
+# Install the ajentic plugin
+/plugin install ajentic@007
 
 # Verify installation
 claude plugin list
 
-# Update plugin
-claude plugin update project-007
-
 # Uninstall
-claude plugin uninstall project-007
+claude plugin uninstall ajentic
 ```
 
 ### For Developers
@@ -171,14 +211,14 @@ claude plugin uninstall project-007
 git clone https://github.com/ajbrown/007.git
 cd 007
 
-# Install in development mode (symlink)
-claude plugin install .
+# Test the plugin directly
+claude --plugin-dir ./plugins/ajentic
 
-# Test changes - Claude will use the local files
-# Make changes to agents/, commands/, etc.
+# Validate marketplace structure
+claude plugin validate .
 
-# Validate plugin structure
-node -e "JSON.parse(require('fs').readFileSync('.claude-plugin/plugin.json'))"
+# Validate individual plugin
+claude plugin validate ./plugins/ajentic
 ```
 
 ## Plugin Caching
@@ -190,7 +230,7 @@ Claude Code copies plugins to a cache directory for security:
 
 ## Version Management
 
-Project 007 follows semantic versioning:
+Project 007 follows semantic versioning for both the marketplace and individual plugins:
 
 - **MAJOR** (X.0.0): Breaking changes to agent/command interfaces
 - **MINOR** (0.X.0): New agents, commands, or backward-compatible features
@@ -198,18 +238,26 @@ Project 007 follows semantic versioning:
 
 ### Release Process
 
-1. Update version in `.claude-plugin/plugin.json`
-2. Update CHANGELOG.md with changes
-3. Commit: `git commit -m "chore: bump version to X.Y.Z"`
-4. Tag: `git tag vX.Y.Z`
-5. Push: `git push && git push --tags`
-6. Users update: `claude plugin update project-007`
+1. Update version in the plugin's `.claude-plugin/plugin.json`
+2. Update version in `.claude-plugin/marketplace.json` plugins array
+3. Update CHANGELOG.md with changes
+4. Commit: `git commit -m "chore: bump ajentic to X.Y.Z"`
+5. Tag: `git tag vX.Y.Z`
+6. Push: `git push && git push --tags`
+7. Users update via marketplace
 
-## Extending the Plugin
+## Extending the Marketplace
 
-### Adding a New Agent
+### Adding a New Plugin
 
-1. Create `agents/your-agent.md`:
+1. Create `plugins/your-plugin/.claude-plugin/plugin.json`
+2. Add agents and commands under the plugin directory
+3. Add the plugin entry to `.claude-plugin/marketplace.json`
+4. Update documentation
+
+### Adding a New Agent to ajentic
+
+1. Create `plugins/ajentic/agents/your-agent.md`:
 ```markdown
 ---
 description: Your agent description
@@ -222,12 +270,12 @@ capabilities:
 ...
 ```
 
-2. Claude Code automatically discovers agents in `agents/` directory
+2. Claude Code automatically discovers agents in the `agents/` directory
 3. No plugin.json update needed (agents directory is referenced)
 
-### Adding a New Command
+### Adding a New Command to ajentic
 
-1. Create `commands/your-command.md`:
+1. Create `plugins/ajentic/commands/your-command.md`:
 ```markdown
 ---
 description: Your command description
@@ -242,7 +290,7 @@ arguments:
 ...
 ```
 
-2. Add to `.claude-plugin/plugin.json`:
+2. Add to `plugins/ajentic/.claude-plugin/plugin.json`:
 ```json
 {
   "commands": [
@@ -260,8 +308,8 @@ arguments:
 ### Manual Testing
 
 ```bash
-# Install plugin locally
-claude plugin install .
+# Test plugin directly
+claude --plugin-dir ./plugins/ajentic
 
 # Test command
 claude
@@ -273,15 +321,25 @@ claude
 
 ### Validation Checklist
 
-- [ ] `plugin.json` is valid JSON
+- [ ] `marketplace.json` is valid JSON
+- [ ] Plugin `plugin.json` is valid JSON
 - [ ] All command paths in manifest exist
 - [ ] All agents have proper frontmatter
 - [ ] All commands have proper frontmatter
 - [ ] LICENSE file exists
 - [ ] README.md has installation instructions
-- [ ] Version follows semantic versioning
+- [ ] Versions follow semantic versioning
 
 ## Troubleshooting
+
+### Marketplace Not Loading
+```bash
+# Verify marketplace.json syntax
+cat .claude-plugin/marketplace.json | jq .
+
+# Check plugin structure
+ls -la plugins/ajentic/.claude-plugin/plugin.json
+```
 
 ### Plugin Not Loading
 ```bash
@@ -289,10 +347,10 @@ claude
 claude --debug
 
 # Verify plugin.json syntax
-node -e "JSON.parse(require('fs').readFileSync('.claude-plugin/plugin.json'))"
+cat plugins/ajentic/.claude-plugin/plugin.json | jq .
 
 # Check file paths
-ls -la .claude-plugin/plugin.json agents/ commands/
+ls -la plugins/ajentic/agents/ plugins/ajentic/commands/
 ```
 
 ### Command Not Found
@@ -301,7 +359,7 @@ ls -la .claude-plugin/plugin.json agents/ commands/
 - Paths should be relative to plugin root with `./` prefix
 
 ### Agent Not Available
-- Verify agent file exists in `agents/` directory
+- Verify agent file exists in `plugins/ajentic/agents/` directory
 - Check frontmatter has required `description` field
 - Agent filenames must use `.md` extension
 
@@ -311,11 +369,12 @@ When contributing to Project 007:
 
 1. Fork the repository
 2. Create a feature branch
-3. Add/modify agents or commands
-4. Update version in plugin.json (semantic versioning)
-5. Update README.md and PLUGIN.md as needed
-6. Test locally with `claude plugin install .`
-7. Submit pull request
+3. Add/modify agents or commands under `plugins/ajentic/`
+4. Update version in the plugin's plugin.json (semantic versioning)
+5. Update marketplace.json if adding a new plugin
+6. Update README.md and PLUGIN.md as needed
+7. Test locally with `claude --plugin-dir ./plugins/ajentic`
+8. Submit pull request
 
 ## Resources
 
@@ -325,7 +384,7 @@ When contributing to Project 007:
 
 ---
 
-*Built with ❤️ for the agentic development community*
+*Built for the agentic development community*
 
 ```
 "The name's Code... Claude Code."

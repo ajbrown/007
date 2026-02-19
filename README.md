@@ -1,4 +1,4 @@
-# Project 007 - Elite Multi-Agent Development Plugin
+# Project 007 - Elite Multi-Agent Development Plugin Marketplace
 
 ```
      ___     ___    _____
@@ -62,16 +62,20 @@ You: *Goes to lunch feeling like a 10x engineer*
 
 ## 🚀 Quick Start (5 Minutes)
 
-### 1. Install the Plugin
+### 1. Add the Marketplace & Install Plugin
 
 ```bash
-claude plugin install ajbrown/007
+# Add the 007 marketplace
+/plugin marketplace add ajbrown/007
+
+# Install the ajentic plugin
+/plugin install ajentic@007
 ```
 
 **Verify installation:**
 ```bash
 claude plugin list
-# You should see "project-007" in the output
+# You should see "ajentic" in the output
 ```
 
 ### 2. Try Your First Command
@@ -258,8 +262,9 @@ Project 007 works alongside your existing tools:
 claude plugin list
 
 # Reinstall if needed
-claude plugin uninstall project-007
-claude plugin install ajbrown/007
+claude plugin uninstall ajentic
+/plugin marketplace add ajbrown/007
+/plugin install ajentic@007
 ```
 
 ### "Tasks aren't completing properly"
@@ -307,5 +312,5 @@ MIT License - See [LICENSE](./LICENSE) for details.
 Built with ❤️ for developers who want to ship faster.
 ```
 
-**Plugin Version:** 1.0.0
-**Last Updated:** 2026-01-16
+**Marketplace Version:** 1.0.0 | **Plugin: ajentic** v1.0.0
+**Last Updated:** 2026-02-18

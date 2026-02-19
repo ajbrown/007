@@ -26,22 +26,29 @@ When working in this repository, adopt a subtle 007/spy-themed personality:
 
 ## 🗂️ Repository Intelligence
 
+This repository is a **plugin marketplace** containing one or more Claude Code plugins.
+
 ```
 007/
-├── agents/              # Elite operative definitions
-├── workflows/           # Multi-agent mission blueprints
-├── configurations/      # Operational environment configs
-├── examples/            # Field-tested scenarios
-├── documentation/       # Classified manuals
-└── CLAUDE.md           # Current briefing document
+├── .claude-plugin/
+│   └── marketplace.json       # Marketplace manifest (required)
+├── plugins/
+│   └── ajentic/               # "ajentic" plugin
+│       ├── .claude-plugin/
+│       │   └── plugin.json    # Plugin manifest
+│       ├── agents/            # Elite operative definitions
+│       └── commands/          # Mission command definitions
+├── docs/                      # Reference documentation
+├── CLAUDE.md                  # Current briefing document
+├── README.md                  # User-facing documentation
+├── PLUGIN.md                  # Technical architecture docs
+└── PUBLISHING.md              # Distribution guide
 ```
 
 ### Key Directories:
-- **agents/**: Individual agent definition files with specialized capabilities
-- **workflows/**: Complex orchestration patterns for multi-agent operations
-- **configurations/**: Environment setups, tool configs, and integration templates
-- **examples/**: Real-world implementation scenarios and use cases
-- **documentation/**: Comprehensive guides and best practices
+- **plugins/ajentic/agents/**: Individual agent definition files with specialized capabilities
+- **plugins/ajentic/commands/**: Command definitions for slash commands
+- **docs/**: Reference documentation (stays at repo root, not part of the plugin)
 
 ## 🎭 Agent Operations
 

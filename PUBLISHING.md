@@ -1,4 +1,4 @@
-# 📡 Project 007 Publishing Guide
+# Project 007 Publishing Guide
 
 ```
  ___  _   _ ___  _     ___ ____  _   _ ___ _   _  ____
@@ -8,29 +8,46 @@
 |_|  |_| |_|___/|_____|___|____/|_| |_|___|_| \_|\____|
 ```
 
-This guide covers multiple distribution methods for Project 007 plugin.
+This guide covers distribution methods for the Project 007 plugin marketplace.
 
-## 🎯 Distribution Methods
+## Architecture Overview
 
-### Method 1: Direct GitHub Installation (Recommended)
+Project 007 is a **plugin marketplace** - a repository that contains one or more plugins. Users add the marketplace first, then install individual plugins from it.
 
-Once pushed to GitHub, users can install directly:
+**Installation flow:**
+```bash
+# 1. Add the marketplace
+/plugin marketplace add ajbrown/007
+
+# 2. Install plugins from the marketplace
+/plugin install ajentic@007
+```
+
+## Distribution Methods
+
+### Method 1: GitHub Marketplace (Recommended)
+
+Push to GitHub and users can add the marketplace directly:
 
 ```bash
-# Users install with:
-claude plugin install ajbrown/007
+# Users add with:
+/plugin marketplace add ajbrown/007
+
+# Then install plugins:
+/plugin install ajentic@007
 ```
 
 **Requirements:**
-1. Push plugin to GitHub repository
-2. Ensure `.claude-plugin/plugin.json` is present
-3. Tag releases (optional but recommended)
+1. Push repository to GitHub
+2. Ensure `.claude-plugin/marketplace.json` is present at repo root
+3. Each plugin has its own `.claude-plugin/plugin.json` under `plugins/`
+4. Tag releases (optional but recommended)
 
 **Setup:**
 ```bash
-# Commit plugin structure
+# Commit marketplace structure
 git add .
-git commit -m "feat: Project 007 Claude Code plugin v1.0.0"
+git commit -m "feat: Project 007 marketplace v1.0.0"
 
 # Tag the release
 git tag v1.0.0
@@ -38,102 +55,14 @@ git push origin main --tags
 ```
 
 **Advantages:**
-✓ Simplest for users
-✓ Automatic version control
-✓ Built-in update mechanism
-✓ No marketplace configuration needed
+- Simplest for users
+- Automatic version control
+- Built-in update mechanism
+- Multiple plugins in one repository
 
 ---
 
-### Method 2: Create Your Own Marketplace
-
-Host a custom marketplace for multiple plugins:
-
-#### Step 1: Create Marketplace Structure
-
-```bash
-mkdir -p 007-marketplace/.claude-plugin
-mkdir -p 007-marketplace/plugins/
-```
-
-#### Step 2: Move Plugin to Marketplace
-
-```bash
-# Copy Project 007 to marketplace
-cp -r 007 007-marketplace/plugins/project-007
-```
-
-#### Step 3: Create Marketplace Manifest
-
-**File: `007-marketplace/.claude-plugin/marketplace.json`**
-```json
-{
-  "name": "project-007-marketplace",
-  "owner": {
-    "name": "AJ Brown",
-    "email": "yesreply@happy.engineering"
-  },
-  "metadata": {
-    "description": "Elite agentic workflows and advanced multi-agent orchestration tools",
-    "version": "1.0.0",
-    "pluginRoot": "./plugins"
-  },
-  "plugins": [
-    {
-      "name": "project-007",
-      "source": "./plugins/project-007",
-      "description": "Elite agentic software delivery workflows - advanced multi-agent orchestration, strategic planning, and autonomous task execution",
-      "version": "1.0.0",
-      "author": {
-        "name": "AJ Brown",
-        "email": "yesreply@happy.engineering",
-        "url": "https://github.com/ajbrown"
-      },
-      "homepage": "https://github.com/ajbrown/007",
-      "repository": "https://github.com/ajbrown/007",
-      "license": "MIT",
-      "keywords": [
-        "agents",
-        "workflows",
-        "automation",
-        "software-delivery",
-        "multi-agent"
-      ],
-      "category": "productivity"
-    }
-  ]
-}
-```
-
-#### Step 4: Host on GitHub
-
-```bash
-cd 007-marketplace
-git init
-git add .
-git commit -m "Initial marketplace for Project 007"
-git remote add origin https://github.com/ajbrown/007-marketplace.git
-git push -u origin main
-```
-
-#### User Installation:
-```bash
-# Add marketplace
-claude plugin marketplace add ajbrown/007-marketplace
-
-# Install plugin
-claude plugin install project-007@project-007-marketplace
-```
-
-**Advantages:**
-✓ Can bundle multiple plugins
-✓ Centralized plugin catalog
-✓ Custom branding
-✓ Version control per plugin
-
----
-
-### Method 3: Submit to Official Anthropic Marketplace
+### Method 2: Submit to Official Anthropic Marketplace
 
 Get Project 007 featured in the official Claude Code plugin directory.
 
@@ -145,8 +74,8 @@ Get Project 007 featured in the official Claude Code plugin directory.
 
 #### Submission Process:
 
-1. **Prepare Plugin**
-   - Ensure all tests pass
+1. **Prepare Marketplace**
+   - Ensure all plugins are well-structured
    - Complete documentation
    - Add examples and use cases
    - Security review
@@ -164,20 +93,20 @@ Get Project 007 featured in the official Claude Code plugin directory.
 
 4. **User Installation (after approval)**
    ```bash
-   claude plugin install project-007@claude-plugin-directory
+   claude plugin install ajentic@claude-plugin-directory
    ```
 
 **Advantages:**
-✓ Maximum visibility
-✓ Anthropic's endorsement
-✓ Discoverability via `/plugin > Discover`
-✓ Trust and credibility
+- Maximum visibility
+- Anthropic's endorsement
+- Discoverability via `/plugin > Discover`
+- Trust and credibility
 
 ---
 
-### Method 4: Community Marketplaces
+### Method 3: Community Marketplaces
 
-Submit to community-driven marketplaces:
+Submit individual plugins to community-driven marketplaces:
 
 #### Available Community Marketplaces:
 - https://claudemarketplaces.com/
@@ -193,14 +122,14 @@ Each marketplace has its own submission process. Generally:
 4. Wait for review and approval
 
 **Advantages:**
-✓ Multiple distribution channels
-✓ Community exposure
-✓ Faster approval than official marketplace
-✓ Niche audience targeting
+- Multiple distribution channels
+- Community exposure
+- Faster approval than official marketplace
+- Niche audience targeting
 
 ---
 
-## 🔐 Private Distribution
+## Private Distribution
 
 For team or enterprise use:
 
@@ -210,38 +139,39 @@ For team or enterprise use:
 # Set GitHub token
 export GITHUB_TOKEN=ghp_xxxxxxxxxxxxxxxxxxxx
 
-# Users install with:
-claude plugin install ajbrown/007-private
+# Users add marketplace with:
+/plugin marketplace add ajbrown/007-private
+/plugin install ajentic@007-private
 ```
 
-### Option B: Internal Marketplace
+### Option B: Internal Marketplace Configuration
 
 **Team settings (`.claude/settings.json`):**
 ```json
 {
   "extraKnownMarketplaces": {
-    "company-tools": {
+    "007": {
       "source": {
         "source": "github",
-        "repo": "your-org/claude-plugins"
+        "repo": "your-org/007"
       }
     }
   },
   "enabledPlugins": {
-    "project-007@company-tools": true
+    "ajentic@007": true
   }
 }
 ```
 
 **Advantages:**
-✓ Access control
-✓ Internal tools integration
-✓ Company policy compliance
-✓ Customization for team needs
+- Access control
+- Internal tools integration
+- Company policy compliance
+- Customization for team needs
 
 ---
 
-## 📦 Version Management
+## Version Management
 
 ### Semantic Versioning
 Follow semver: `MAJOR.MINOR.PATCH`
@@ -260,23 +190,20 @@ git tag v2.0.0
 git push --tags
 ```
 
-### Update manifest:
-```json
-{
-  "version": "1.1.0"
-}
-```
+### Update manifests:
+When releasing, update versions in:
+1. `plugins/ajentic/.claude-plugin/plugin.json` - plugin version
+2. `.claude-plugin/marketplace.json` - plugin version in plugins array
 
 ---
 
-## 🧪 Testing Before Publishing
+## Testing Before Publishing
 
 ### Local Testing
 
 ```bash
-# Install from local directory
-cd /path/to/007
-claude plugin install .
+# Test plugin directly
+claude --plugin-dir ./plugins/ajentic
 
 # Test all commands
 claude
@@ -290,38 +217,43 @@ claude
 ### Validation
 
 ```bash
-# Validate plugin structure
+# Validate marketplace structure
 claude plugin validate .
 
+# Validate individual plugin
+claude plugin validate ./plugins/ajentic
+
 # Check JSON syntax
-cat .claude-plugin/plugin.json | jq .
+cat .claude-plugin/marketplace.json | jq .
+cat plugins/ajentic/.claude-plugin/plugin.json | jq .
 ```
 
 ---
 
-## 📊 Publishing Checklist
+## Publishing Checklist
 
 Before publishing, ensure:
 
-- [ ] `plugin.json` has correct version
+- [ ] `marketplace.json` has correct version and plugin entries
+- [ ] Each plugin's `plugin.json` has correct version
 - [ ] All agents have proper frontmatter with `description` and `capabilities`
 - [ ] All commands are tested and working
-- [ ] README.md has installation instructions
+- [ ] README.md has marketplace installation instructions
 - [ ] LICENSE file is present
 - [ ] PLUGIN.md technical documentation is complete
 - [ ] Repository has descriptive README
-- [ ] Git tags match plugin version
+- [ ] Git tags match marketplace version
 - [ ] All links in documentation work
 - [ ] Security review completed
 - [ ] No secrets or credentials in code
 
 ---
 
-## 🚀 Recommended Publishing Strategy
+## Recommended Publishing Strategy
 
 For Project 007, we recommend a **multi-channel approach**:
 
-1. **Immediate:** GitHub direct installation (easiest for users)
+1. **Immediate:** GitHub marketplace (easiest for users)
 2. **Short-term:** Submit to 2-3 community marketplaces
 3. **Long-term:** Apply to official Anthropic marketplace
 
@@ -329,20 +261,21 @@ This maximizes reach while maintaining flexibility.
 
 ---
 
-## 📈 Post-Publishing
+## Post-Publishing
 
 ### Monitor Usage
 - Watch GitHub stars and forks
 - Track issues and feature requests
 - Monitor community feedback
 
-### Maintain Plugin
+### Maintain Marketplace
 - Regular updates for new Claude Code features
 - Bug fixes and improvements
 - Documentation updates
 - Security patches
+- Add new plugins as capabilities grow
 
-### Promote Plugin
+### Promote
 - Blog post or tutorial
 - Social media announcement
 - Community forum posts
@@ -350,7 +283,7 @@ This maximizes reach while maintaining flexibility.
 
 ---
 
-## 🆘 Support
+## Support
 
 **Issues:** https://github.com/ajbrown/007/issues
 **Discussions:** https://github.com/ajbrown/007/discussions
@@ -362,4 +295,4 @@ This maximizes reach while maintaining flexibility.
 "Good luck, Agent. The mission is in your hands."
 ```
 
-*Publishing guide last updated: 2026-01-16*
+*Publishing guide last updated: 2026-02-18*

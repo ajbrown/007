@@ -1,0 +1,22 @@
+{
+  "name": "007",
+  "owner": {
+    "name": "A.J. Brown",
+    "email": "aj@ajbrown.org"
+  },
+  "metadata": {
+    "description": "Project 007 - Elite agentic software delivery workflows and multi-agent orchestration plugins for Claude Code",
+    "version": "1.0.0",
+    "pluginRoot": "./plugins"
+  },
+  "plugins": [
+    {
+      "name": "ajentic",
+      "source": "./plugins/ajentic",
+      "description": "A.J.'s agentic development flow - multi-agent orchestration, strategic planning, and autonomous task execution",
+      "version": "1.0.0",
+      "keywords": ["agents", "workflows", "automation", "multi-agent", "parallel-execution"],
+      "category": "productivity"
+    }
+  ]
+}
