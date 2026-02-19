@@ -26,5 +26,12 @@
     "./commands/write-implementation-plan.md",
     "./commands/testing/fix-tests.md"
   ],
-  "agents": "./agents/"
+  "agents": [
+    "./agents/code-reviewer.md",
+    "./agents/frontend-engineer.md",
+    "./agents/linear-scrum-master.md",
+    "./agents/product-manager.md",
+    "./agents/quality-engineer.md",
+    "./agents/security-reviewer.md"
+  ]
 }
